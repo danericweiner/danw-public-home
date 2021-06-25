@@ -1,0 +1,54 @@
+﻿@page "/earthservicemap"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using DanWHome.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+@if (invocationsData == null) {
+    <p><em>Loading...</em></p>
+} else {    
+    <div id="divEarthServiceMap" class="mx-n4">
+        <div id="divPanel">
+            <div id="divList">
+                <div class="Header">
+                    <table class="ItemTable">
+                        <tr>
+                            <td><b>id</b></td>
+                            <td><b>lat/long</b></td>
+                            <td><b>time</b></td>
+                            <td><b>v</b></td>
+                            <td><b>dur</b></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="Body">
+
+                </div>
+            </div>
+            <div id="divPopUpBackground"></div>
+        </div>
+        <div id="divTab"></div>
+        <div id="divMap"></div>
+        <div style="display: none;">
+            <input type="text" runat="server" id="txtInvocations" value="@invocationsData.Invocations" />
+        </div>
+    </div>
+}
+@code{
+    private InvocationsData invocationsData;
+
+    protected override Task OnAfterRenderAsync(bool firstRender) {
+        return Task.CompletedTask;
+    }
+
+    protected override async Task OnInitializedAsync() {
+        try {
+            invocationsData = await Http.GetFromJsonAsync<InvocationsData>("EarthService");
+            await JS.InvokeVoidAsync("EarthServiceMap_Init", DotNetObjectReference.Create(this)).AsTask();
+        } catch (AccessTokenNotAvailableException exception) {
+            exception.Redirect();
+        }
+    }
+}

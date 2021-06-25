@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Dan W</title>
+    <link href="~/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/app.min.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
+</head>
+
+<body>
+    <app>
+        <div class="sidebar">
+            <div class="top-row pl-4 navbar navbar-dark">
+                <a class="navbar-brand" href="~/">Dan W</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="top-row px-4 auth">
+                <!-- match spacing of client side pages -->
+            </div>
+            <div class="content px-4">
+                @RenderBody()
+            </div>
+        </div>
+    </app>    
+</body>
+@RenderSection("scripts", required: false)
+</html>

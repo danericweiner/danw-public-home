@@ -1,0 +1,87 @@
+﻿@page "/contact"
+@using DanWHome.Shared
+@inject IJSRuntime JS
+@inject IHttpClientFactory HttpClientFactory
+
+<EditForm Model="@ContactData" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    @switch (Submission) {
+        case eSubmission.Success:
+
+            <div class="form-group col-sm-12 alert alert-light">
+                <label class="col-sm-12 text-center">Thank you. I will contact you shortly.</label>
+            </div>
+            break;
+        case eSubmission.Failure:
+
+            <div class="form-group col-sm-12 alert">
+                <label class="col-sm-12 text-center">An error has occurred.  Please try again later.</label>
+            </div>
+            break;
+        default:
+
+            // none, submitting
+            <div class="form-group offset-lg-2 offset-md-1">
+                <label for="name">Name:</label>
+                <InputText class="form-control col-lg-8 col-md-10" name="name" placeholder="Enter name" @bind-Value=ContactData.Name />
+                <ValidationMessage For="@(() => ContactData.Name)" />
+            </div>
+            <div class="form-group offset-lg-2 offset-md-1">
+                <label for="email">Email:</label>
+                <InputText class="form-control col-lg-8 col-md-10" name="email" placeholder="Enter email" @bind-Value=ContactData.Email />
+                <ValidationMessage For="@(() => ContactData.Email)" />
+            </div>
+            <div class="form-group offset-lg-2 offset-md-1">
+                <label for="message">Message:</label>
+                <InputTextArea rows="5" class="form-control col-lg-8 col-md-10" name="message" placeholder="Enter message" @bind-Value="ContactData.Message"></InputTextArea>
+                <ValidationMessage For="@(() => ContactData.Message)" />
+            </div>
+            <div class="form-group offset-lg-2 offset-md-1">
+                <button type="submit" disabled="@(Submission != eSubmission.None)" class="btn btn-secondary">Submit</button>
+            </div>
+            break;
+    }
+</EditForm>
+
+@code {
+    protected enum eSubmission
+    {
+        None,
+        Submitting,
+        Success,
+        Failure
+    }
+
+    protected ContactData ContactData = new ContactData();
+    protected eSubmission Submission = eSubmission.None;
+
+    protected override Task OnAfterRenderAsync(bool firstRender) {
+        if (firstRender) {
+            return JS.InvokeVoidAsync("Contact_Init", DotNetObjectReference.Create(this)).AsTask();
+        }
+        return Task.CompletedTask;
+    }
+
+    protected async void HandleValidSubmit(EditContext editContext) {
+        try {
+            Submission = eSubmission.Submitting;
+            StateHasChanged();
+
+            var http = HttpClientFactory.CreateClient("DanWHome.AnonymousAPI");
+            HttpResponseMessage result = await http.PostAsJsonAsync<ContactData>("ContactData", ContactData);
+            if (result.StatusCode != System.Net.HttpStatusCode.OK) { throw new Exception("Error submitting"); }
+
+            Submission = eSubmission.Success;
+            StateHasChanged();
+        } catch (Exception ex) {
+            Submission = eSubmission.Failure;
+            StateHasChanged();
+        }
+    }
+
+    [JSInvokable]
+    public Task<string> SetRecaptchaToken(string token) {
+        ContactData.ReCaptchaToken = token;
+        return Task.FromResult("");
+    }
+}

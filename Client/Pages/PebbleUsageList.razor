@@ -1,0 +1,48 @@
+﻿@page "/pebbleusagelist"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using DanWHome.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+@if (invocationsData == null) {
+    <p><em>Loading...</em></p>
+} else {    
+<div id="divPebbleUsageList" class="mx-n4">
+    <div id="divPanel">
+        <div id="divList">
+            <div class="Header">
+                <table class="ItemTable">
+                    <tr>
+                        <td><b>id</b></td>
+                        <td><b>ip</b></td>
+                        <td><b>date</b></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="Body">
+            </div>
+        </div>
+    </div>
+    <div style="display: none;">
+        <input type="text" runat="server" id="txtInvocations" value="@invocationsData.Invocations" />
+    </div>    
+</div>
+}
+@code{
+    private InvocationsData invocationsData;
+
+    protected override Task OnAfterRenderAsync(bool firstRender) {
+        return Task.CompletedTask;
+    }
+
+    protected override async Task OnInitializedAsync() {
+        try {
+            invocationsData = await Http.GetFromJsonAsync<InvocationsData>("PebbleUsage");
+            await JS.InvokeVoidAsync("PebbleUsageList_Init", DotNetObjectReference.Create(this)).AsTask();
+        } catch (AccessTokenNotAvailableException exception) {
+            exception.Redirect();
+        }
+    }
+}

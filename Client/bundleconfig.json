@@ -1,0 +1,60 @@
+[
+  {
+    "outputFileName": "wwwroot/js/earthservicemap.min.js",
+    "inputFiles": [
+      "wwwroot/js/earthservicemap.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/pebbleusagelist.min.js",
+    "inputFiles": [
+      "wwwroot/js/pebbleusagelist.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/earthservicemap.min.css",
+    "inputFiles": [
+      "wwwroot/css/earthservicemap.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/pebbleusagelist.min.css",
+    "inputFiles": [
+      "wwwroot/css/pebbleusagelist.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/app.min.js",
+    "inputFiles": [
+      "wwwroot/js/app.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/app.min.css",
+    "inputFiles": [
+      "wwwroot/css/app.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/contact.min.js",
+    "inputFiles": [
+      "wwwroot/js/contact.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  }
+]

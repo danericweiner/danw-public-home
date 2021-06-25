@@ -1,0 +1,156 @@
+﻿#divEarthServiceMap {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    position: fixed;
+    overflow: hidden;
+}
+
+#divEarthServiceMap #divTab {
+    position: absolute;
+    top: 12%;
+    height: 37px;
+    width: 17px;
+    background-color: white;
+    z-index: 10;
+    cursor: pointer;
+    padding-top: 9px;
+    padding-left: 5px;
+    font-size: 14px;
+    color: #666666;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 4px -1px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 4px -1px;
+    border-radius: 0px 2px 2px 0px;
+}
+
+#divEarthServiceMap #divPanel {
+    border-top: 1px solid #eee;
+    position: absolute;
+    z-index: 15;
+    background-color: white;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 4px -1px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 4px -1px;
+}
+
+#divEarthServiceMap div.Animate {
+    transition: 0.3s;
+}
+
+#divEarthServiceMap #divMap {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#divEarthServiceMap #divList {
+    position: absolute;
+    width: 305px;
+}
+
+#divEarthServiceMap #divList div.Header {
+    width: 100%;
+}
+
+#divEarthServiceMap #divList div.Body {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+}
+
+#divEarthServiceMap #divList div.Body::-webkit-scrollbar {
+    width: 0 !important
+}
+
+#divEarthServiceMap #divList div.Header table.ItemTable {
+    border-collapse: collapse;
+    border: none;
+    background-color: white;
+    outline: none;
+    width: 295px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    table-layout: fixed;
+}
+
+#divEarthServiceMap #divList div.Body table.ItemTable {
+    border-collapse: collapse;
+    border: none;
+    background-color: white;
+    outline: none;
+    width: 295px;
+    margin: 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    table-layout: fixed;
+}
+
+#divEarthServiceMap #divList td.Clickable {
+    cursor: pointer;
+}
+
+#divEarthServiceMap #divList div.Header table.ItemTable td,
+#divEarthServiceMap #divList div.Body table.ItemTable td {
+    padding: 5px;
+    white-space: nowrap;
+}
+
+#divEarthServiceMap #divList div.Header table.ItemTable td:first-child,
+#divEarthServiceMap #divList div.Body table.ItemTable td:first-child {
+    width: 20px;
+}
+
+#divEarthServiceMap #divList div.Header table.ItemTable td:nth-child(2),
+#divEarthServiceMap #divList div.Body table.ItemTable td:nth-child(2) {
+    width: 111px;
+}
+
+#divList div.Header table.ItemTable td:nth-child(3),
+#divList div.Body table.ItemTable td:nth-child(3) {
+    width: 50px;
+}
+
+#divEarthServiceMap #divList div.Header table.ItemTable td:nth-child(4),
+#divEarthServiceMap #divList div.Body table.ItemTable td:nth-child(4) {
+    width: 30px;
+}
+
+#divEarthServiceMap #divList div.Header table.ItemTable td:nth-child(5),
+#divEarthServiceMap #divList div.Body table.ItemTable td:nth-child(5) {
+    width: 32px;
+}
+
+#divEarthServiceMap div.Popup {
+    font-size: 11px;
+    display: none;
+    padding: 5px;
+    position: fixed;
+    background-color: white;
+    -webkit-box-shadow: 2px 2px 10px rgba(0,0,0,.45);
+    -moz-box-shadow: 2px 2px 10px rgba(0,0,0,.45);
+    box-shadow: 2px 2px 10px rgba(0,0,0,.45);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 150;
+    cursor: default;
+}
+
+#divEarthServiceMap #divPopUpBackground {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+}
+
+#divEarthServiceMap div.DisableScroll {
+    overflow: hidden !important;
+}

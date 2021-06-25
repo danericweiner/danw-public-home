@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>    
+    <UserSecretsId>c56ea281-b8b0-4cb8-99c2-43603ce6af4b</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+    <Content Remove="wwwroot\css\app.css" />
+    <Content Remove="wwwroot\css\earthservicemap.css" />
+    <Content Remove="wwwroot\css\pebbleusagelist.css" />
+    <Content Remove="wwwroot\js\app.js" />
+    <Content Remove="wwwroot\js\contact.js" />
+    <Content Remove="wwwroot\js\earthservicemap.js" />
+    <Content Remove="wwwroot\js\pebbleusagelist.js" />
+    <Content Remove="wwwroot\Jumbotron.jpg" />
+    <Content Remove="wwwroot\LinkedIn.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+    <None Include="wwwroot\css\app.css" />
+    <None Include="wwwroot\css\earthservicemap.css" />
+    <None Include="wwwroot\css\pebbleusagelist.css" />
+    <None Include="wwwroot\js\app.js" />
+    <None Include="wwwroot\js\contact.js" />
+    <None Include="wwwroot\js\earthservicemap.js" />
+    <None Include="wwwroot\js\pebbleusagelist.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.7" />    
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.7" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\DanWHome.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

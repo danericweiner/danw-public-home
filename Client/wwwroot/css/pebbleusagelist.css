@@ -1,0 +1,83 @@
+﻿#divPebbleUsageList {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    margin: 0px;
+    position: fixed;
+}
+
+#divPebbleUsageList #divPanel {
+    width: 305px; 
+    position: absolute;
+    z-index: 10;
+}
+
+#divPebbleUsageList #divList {
+    position: absolute;
+    width: 305px;    
+}
+
+#divPebbleUsageList #divList div.Header {
+    width: 100%;
+}
+
+#divPebbleUsageList #divList div.Body {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;    
+}
+
+#divPebbleUsageList #divList div.Body::-webkit-scrollbar {
+    width: 0 !important
+}
+
+#divPebbleUsageList #divList div.Header table.ItemTable{
+    border-collapse: collapse;
+    border: none;
+    background-color: white;    
+    outline: none;
+    width: 295px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    table-layout: fixed;
+}
+
+#divPebbleUsageList #divList div.Body table.ItemTable {
+    border-collapse: collapse;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+    width: 295px;
+    margin: 5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    table-layout: fixed;
+}
+
+#divPebbleUsageList #divList div.Header table.ItemTable td,
+#divPebbleUsageList #divList div.Body table.ItemTable td {
+    padding: 5px;
+    white-space: nowrap;
+}
+
+#divPebbleUsageList #divList div.Header table.ItemTable td:first-child,
+#divPebbleUsageList #divList div.Body table.ItemTable td:first-child {
+    width: 10px;
+}
+
+#divPebbleUsageList #divList div.Header table.ItemTable td:nth-child(2),
+#divPebbleUsageList #divList div.Body table.ItemTable td:nth-child(2) {
+    width: 50px;
+}
+
+#divPebbleUsageList #divList div.Header table.ItemTable td:nth-child(3),
+#divPebbleUsageList #divList div.Body table.ItemTable td:nth-child(3) {
+    width: 55px;
+}
+
