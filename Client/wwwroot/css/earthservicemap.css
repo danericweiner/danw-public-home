@@ -154,3 +154,7 @@
 #divEarthServiceMap div.DisableScroll {
     overflow: hidden !important;
 }
+
+#divEarthServiceMap button{
+    Outline: none;
+}
